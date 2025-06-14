@@ -5,11 +5,18 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 
 export function SortableItem(props) {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: props.id })
+  const { id } = props
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    isDragging, // 新增：获取拖拽状态
+  } = useSortable({ id })
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
+    transition: isDragging ? 'none' : 'transform 1s ease',
   }
 
   return (
@@ -20,7 +27,7 @@ export function SortableItem(props) {
       {...attributes}
       {...listeners}
     >
-      6666
+      测试 {id}
     </div>
   )
 }

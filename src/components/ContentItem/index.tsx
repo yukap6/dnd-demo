@@ -14,11 +14,11 @@ interface IProps {
 
 export default function ContentItem(props: IProps) {
   const { onClose = () => {}, title = '', className = '', minWidth = 240 } = props
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: props.id })
+  const { attributes, listeners, setNodeRef, transform, isDragging } = useSortable({ id: props.id })
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
+    transition: isDragging ? 'none' : 'transform .5s ease',
   }
 
   return (

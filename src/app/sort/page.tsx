@@ -28,15 +28,19 @@ export default function App() {
   )
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-      <SortableContext items={items} strategy={verticalListSortingStrategy}>
-        {/* <div className="flex"> */}
-        {items.map((id) => (
-          <SortableItem key={id} id={id} />
-        ))}
-        {/* </div> */}
-      </SortableContext>
-    </DndContext>
+    <div className="grid grid-cols-3">
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext
+          className="grid grid-cols-3"
+          items={items}
+          strategy={verticalListSortingStrategy}
+        >
+          {items.map((id) => (
+            <SortableItem key={id} id={id} />
+          ))}
+        </SortableContext>
+      </DndContext>
+    </div>
   )
 
   function handleDragEnd(event) {
