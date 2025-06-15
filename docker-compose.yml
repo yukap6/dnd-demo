@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  next-app:
+    build: .
+    container_name: nextjs-app-3001 # 唯一容器名
+    ports:
+      - '3001:3001' # 宿主机:容器端口映射[8](@ref)
+    networks:
+      - my-network # 隔离网络[11](@ref)
+
+  # 其他服务（如Nginx代理）
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - my-network
+
+networks:
+  my-network: # 自定义网络隔离容器[11](@ref)
+    driver: bridge

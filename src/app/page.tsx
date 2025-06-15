@@ -96,9 +96,10 @@ export default function Home() {
         </nav>
         <section className="h-screen pl-16">
           <section
-            className={`h-full grid grid-cols-${renderedContentItems.length} overflow-x-auto`}
+            className={`h-full grid overflow-x-auto`}
             style={{
               minWidth: `${contentItemMinWidth * renderedContentItems.length}px`,
+              gridTemplateColumns: `repeat(${renderedContentItems.length}, minmax(${contentItemMinWidth}px, 1fr))`,
             }}
           >
             <DndContext
