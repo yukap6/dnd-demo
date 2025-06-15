@@ -14,6 +14,7 @@ import {
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
+  horizontalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { MapIcon, MusicalNoteIcon, ChatBubbleBottomCenterIcon } from '@heroicons/react/24/outline'
 
@@ -107,7 +108,7 @@ export default function Home() {
             >
               <SortableContext
                 items={contentItems.map((item) => item.id)}
-                strategy={verticalListSortingStrategy}
+                strategy={horizontalListSortingStrategy}
               >
                 {renderedContentItems.map((item, itemIndex) => (
                   <ContentItem
